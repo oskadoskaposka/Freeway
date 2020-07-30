@@ -69,10 +69,9 @@ verificaColisaoMinhaRaquete = () => {
   }
 
 // Colisão da bolinha com a minha Raquete usando Library
-verificaColisaoMinhaRaqueteLibrary = () =>{
+verificaColisaoMinhaRaqueteLibrary = () => {
   let acertou = false
-  acertou = collideRectCircle(xRaquete, yRaquete, comprimentoRaquete, alturaRaquete,       xBolinha, yBolinha,raioBolinha)
-
+  acertou = collideRectCircle(xRaquete, yRaquete, comprimentoRaquete, alturaRaquete, xBolinha, yBolinha,raioBolinha)
   acertou ? velocidadeXBolinha *= -1 : ""
         
         /*
