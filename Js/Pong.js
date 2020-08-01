@@ -9,14 +9,18 @@ let velocidadeXBolinha = 3
 let velocidadeYBolinha = 3
 
 // Variáveis da Raquete
-let xRaquete = 15
+let xRaquete = 2
 let yRaquete = 150
 let comprimentoRaquete = 10
 let alturaRaquete = 100
 
 // Variáveis da Raquete Oponente
-let xRaqueteOponente = 575
+let xRaqueteOponente = 588
 let yRaqueteOponente = 150
+
+// Variáveis do Placar
+let meusPontos = 0
+let pontosDoOponente = 0
 
 // Criar quadro
 function setup() {
@@ -35,6 +39,7 @@ function draw() {
   criarRaquete(xRaqueteOponente, yRaqueteOponente)
   verificaColisaoRaqueteLibrary(xRaqueteOponente, yRaqueteOponente)
   movimentarRaqueteOponente()
+  incluirPlacar ()
 }
 
 // Criar a bolinha
@@ -94,5 +99,11 @@ verificaColisaoRaqueteLibrary = (x, y) =>{
 
 // Movimentar a Raquete
 movimentarRaqueteOponente = () => {
-  yRaqueteOponente = yBolinha - 112
+  yRaqueteOponente = yBolinha - 110
+}
+
+function incluirPlacar() {
+    fill(255);
+    text(meusPontos, 278, 26);
+    text(pontosDoOponente, 321, 26);
 }
