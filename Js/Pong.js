@@ -105,9 +105,16 @@ movimentarRaqueteOponente = () => {
 }
 
 let incluirPlacar = () => {
+    textSize(15)
+    textAlign(CENTER)
+    fill(color(255,140,0))
+    rect(130, 10, 40, 20)
     fill(255);
-    text(meusPontos, 278, 26);
-    text(pontosDoOponente, 321, 26);
+    text(meusPontos, 150, 26);
+    fill(color(255,140,0))
+    rect(430, 10, 40, 20)
+    fill(255);
+    text(pontosDoOponente, 450, 26);
 }
 
 // Marcar Pontos ao tocar na borda
