@@ -1,7 +1,8 @@
 // Variáveis da bolinha
 let xBolinha = 300
 let yBolinha = 200
-let diametroBolinha = 25
+let diametroBolinha = 20
+
 let raioBolinha = diametroBolinha / 2
 
 // Variáveis da velocidade da bolinha
@@ -40,6 +41,7 @@ function draw() {
   verificaColisaoRaqueteLibrary(xRaqueteOponente, yRaqueteOponente)
   movimentarRaqueteOponente()
   incluirPlacar ()
+  marcaPontos()
 }
 
 // Criar a bolinha
@@ -102,8 +104,14 @@ movimentarRaqueteOponente = () => {
   yRaqueteOponente = yBolinha - 110
 }
 
-function incluirPlacar() {
+let incluirPlacar = () => {
     fill(255);
     text(meusPontos, 278, 26);
     text(pontosDoOponente, 321, 26);
+}
+
+// Marcar Pontos ao tocar na borda
+let marcaPontos = () => {
+ xBolinha < 10 ? pontosDoOponente += 1 : ""
+ xBolinha > 590 ? meusPontos +=1 :""
 }
