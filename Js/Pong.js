@@ -9,10 +9,14 @@ let velocidadeXBolinha = 3
 let velocidadeYBolinha = 3
 
 // Variáveis da Raquete
-let xRaquete = 5
+let xRaquete = 15
 let yRaquete = 150
 let comprimentoRaquete = 10
 let alturaRaquete = 100
+
+// Variáveis da Raquete Oponente
+let xRaqueteOponente = 575
+let yRaqueteOponente = 150
 
 // Criar quadro
 function setup() {
@@ -25,10 +29,11 @@ function draw() {
   criarBolinha()
   moverBolinha()
   verificaColisao()
-  criarRaquete()
+  criarRaquete(xRaquete, yRaquete)
   movimentarMinhaRaquete()
-  verificaColisaoMinhaRaquete()
-  // verificaColisaoMinhaRaqueteLibrary()
+  verificaColisaoRaqueteLibrary(xRaquete, yRaquete)
+  criarRaquete(xRaqueteOponente, yRaqueteOponente)
+  verificaColisaoRaqueteLibrary(xRaqueteOponente, yRaqueteOponente)
 }
 
 // Criar a bolinha
@@ -37,7 +42,7 @@ criarBolinha = () => circle(xBolinha, yBolinha, diametroBolinha)
 // Mover a bolinha dentro do espaço definido
 moverBolinha = () => {
   xBolinha += velocidadeXBolinha
-  // yBolinha += velocidadeYBolinha
+  yBolinha += velocidadeYBolinha
 }
 
 // Verifica a colisão da bolinha com as bordas do espaço
@@ -53,7 +58,7 @@ verificaColisao = () => {
 }
 
 // Criar a raquete
-criarRaquete = () => rect(xRaquete, yRaquete, comprimentoRaquete, alturaRaquete)
+criarRaquete = (x, y) => rect(x, y, comprimentoRaquete, alturaRaquete)
 
 // Movimentar a Raquete
 movimentarMinhaRaquete = () => {
@@ -61,17 +66,18 @@ movimentarMinhaRaquete = () => {
   keyIsDown(DOWN_ARROW) ? yRaquete += 10 : ""
 }
 
-// Colisão da bolinha com a minha Raquete
+// Colisão da bolinha com a Raquete
 verificaColisaoMinhaRaquete = () => {  
   let acertouRaquete = true
   acertouRaquete = (xBolinha - raioBolinha < xRaquete + comprimentoRaquete && yBolinha - raioBolinha < yRaquete + alturaRaquete && yBolinha + raioBolinha > yRaquete)
   acertouRaquete ? velocidadeXBolinha *= -1 : ""
   }
 
-// Colisão da bolinha com a minha Raquete usando Library
-verificaColisaoMinhaRaqueteLibrary = () => {
+// Colisão da bolinha com a Raquete usando Library
+verificaColisaoRaqueteLibrary = (x, y) =>{
   let acertou = false
-  acertou = collideRectCircle(xRaquete, yRaquete, comprimentoRaquete, alturaRaquete, xBolinha, yBolinha,raioBolinha)
+  acertou = collideRectCircle(x, y, comprimentoRaquete, alturaRaquete, xBolinha, yBolinha, diametroBolinha)
+
   acertou ? velocidadeXBolinha *= -1 : ""
         
         /*
