@@ -116,7 +116,7 @@ verificaColisaoRaqueteLibrary = (x, y) => {
   */
 }
 
-// Movimentar a Raquete
+// Movimentar a Raquete do Oponente
 movimentarRaqueteOponente = () => {
   yRaqueteOponente = yBolinha - 110
 }
@@ -138,3 +138,20 @@ function marcaPontos () {
     meusPontos += 1
     marcouPonto.play ()}
 }
+
+
+// Altera a dificuldade do jogo
+function calculaChanceDeErrar() {
+  if (pontosDoOponente >= meusPontos) {
+    chanceDeErrar += 1
+    if (chanceDeErrar >= 39){
+    chanceDeErrar = 40
+    }
+  } else {
+    chanceDeErrar -= 1
+    if (chanceDeErrar <= 35){
+    chanceDeErrar = 35
+    }
+  }
+}
+//FIM
