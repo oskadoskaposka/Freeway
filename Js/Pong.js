@@ -6,8 +6,8 @@ let diametroBolinha = 20
 let raioBolinha = diametroBolinha / 2
 
 // Variáveis da velocidade da bolinha
-let velocidadeXBolinha = 3
-let velocidadeYBolinha = 3
+let velocidadeXBolinha = 5
+let velocidadeYBolinha = 5
 
 // Variáveis da Raquete
 let xRaquete = 2
@@ -23,9 +23,22 @@ let yRaqueteOponente = 150
 let meusPontos = 0
 let pontosDoOponente = 0
 
+// Variáveis dos sons
+let raquetada
+let marcouPonto
+let trilhaSonora
+
+// Função para carregar os sons
+function preload () {
+raquetada = loadSound("raquetada-1.mp3")
+marcouPonto = loadSound("ponto-1.mp3")
+trilhaSonora = loadSound("trilha-1.mp3")
+}
+
 // Criar quadro
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(600, 400)
+  trilhaSonora.loop()
 }
 
 // Função principal
@@ -40,7 +53,7 @@ function draw() {
   criarRaquete(xRaqueteOponente, yRaqueteOponente)
   verificaColisaoRaqueteLibrary(xRaqueteOponente, yRaqueteOponente)
   movimentarRaqueteOponente()
-  incluirPlacar ()
+  incluirPlacar()
   marcaPontos()
 }
 
@@ -59,8 +72,8 @@ verificaColisao = () => {
   let SaiuNoY = false
 
   saiuNoX = (xBolinha > width - raioBolinha || xBolinha < 0 + raioBolinha)
-  SaiuNoY = (yBolinha > height - raioBolinha || yBolinha < 0 + raioBolinha) 
-  
+  SaiuNoY = (yBolinha > height - raioBolinha || yBolinha < 0 + raioBolinha)
+
   saiuNoX ? velocidadeXBolinha *= -1 : ""
   SaiuNoY ? velocidadeYBolinha *= -1 : ""
 }
@@ -75,28 +88,32 @@ movimentarMinhaRaquete = () => {
 }
 
 // Colisão da bolinha com a Raquete
-verificaColisaoMinhaRaquete = () => {  
-  let acertouRaquete = true
-  acertouRaquete = (xBolinha - raioBolinha < xRaquete + comprimentoRaquete && yBolinha - raioBolinha < yRaquete + alturaRaquete && yBolinha + raioBolinha > yRaquete)
-  acertouRaquete ? velocidadeXBolinha *= -1 : ""
-  }
+// verificaColisaoMinhaRaquete = () => {
+//   let acertouRaquete = true
+//   acertouRaquete = (xBolinha - raioBolinha < xRaquete + comprimentoRaquete && yBolinha - raioBolinha < yRaquete + alturaRaquete && yBolinha + raioBolinha > yRaquete)
+ 
+//   if(acertouRaquete) {
+//     velocidadeXBolinha *= -1 
+//     raquetada.play}
+// }
 
 // Colisão da bolinha com a Raquete usando Library
-verificaColisaoRaqueteLibrary = (x, y) =>{
+verificaColisaoRaqueteLibrary = (x, y) => {
   let acertou = false
   acertou = collideRectCircle(x, y, comprimentoRaquete, alturaRaquete, xBolinha, yBolinha, diametroBolinha)
 
-  acertou ? velocidadeXBolinha *= -1 : ""
-        
-        /*
-        Essa função collideRectCircle() foi usada da biblioteca abaixo:
-        Repo: https://github.com/bmoren/p5.collide2D/
-        Created by http://benmoren.com
-        Some functions and code modified version from 
-        http://www.jeffreythompson.org/collision-detection
-        Version v0.7.3 | June 22, 2020
-        CC BY-NC-SA 4.0
-        */
+  if(acertou) {
+    velocidadeXBolinha *= -1 
+    raquetada.play() }
+  /*
+  Essa função collideRectCircle() foi usada da biblioteca abaixo:
+  Repo: https://github.com/bmoren/p5.collide2D/
+  Created by http://benmoren.com
+  Some functions and code modified version from 
+  http://www.jeffreythompson.org/collision-detection
+  Version v0.7.3 | June 22, 2020
+  CC BY-NC-SA 4.0
+  */
 }
 
 // Movimentar a Raquete
@@ -104,21 +121,20 @@ movimentarRaqueteOponente = () => {
   yRaqueteOponente = yBolinha - 110
 }
 
-let incluirPlacar = () => {
-    textSize(15)
-    textAlign(CENTER)
-    fill(color(255,140,0))
-    rect(130, 10, 40, 20)
-    fill(255);
-    text(meusPontos, 150, 26);
-    fill(color(255,140,0))
-    rect(430, 10, 40, 20)
-    fill(255);
-    text(pontosDoOponente, 450, 26);
+incluirPlacar = () => {
+  fill(255);
+  text(meusPontos, 278, 26);
+  text(pontosDoOponente, 321, 26);
 }
 
 // Marcar Pontos ao tocar na borda
-let marcaPontos = () => {
- xBolinha < 10 ? pontosDoOponente += 1 : ""
- xBolinha > 590 ? meusPontos +=1 :""
+function marcaPontos () {
+  if (xBolinha < 10) {
+    pontosDoOponente += 1
+    marcouPonto.play()
+  }
+  
+  if (xBolinha > 590) {
+    meusPontos += 1
+    marcouPonto.play ()}
 }
