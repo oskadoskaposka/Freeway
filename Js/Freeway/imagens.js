@@ -10,6 +10,8 @@ function preload (){
     imagemDoAtor = loadImage("imagens/dedelicia.png")
     imagemDoAbelha = loadImage("imagens/abelha.jpg")
     imagemDoPitbull = loadImage("imagens/pitbull.jpg")
+    imagemDoMinhoca = loadImage("imagens/minhoca.jpg")
+  
   }
 
   // função para colocar as imagens no quadro
