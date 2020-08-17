@@ -4,7 +4,7 @@ function setup() {
   createCanvas(700, 450);
 }
 
-//função para os desenhos
+//função para criar e mover os desenhos
 function draw() {
   background(imagemDoFundo);
   criarImagem(imagemDoAtor, xAtor, yAtor, comprimentoXAtor, comprimentoYAtor)
@@ -13,4 +13,6 @@ function draw() {
     criarImagem(inimigos[i], xInimigos[i], yInimigos[i], comprInimigos[i], altInimigos[i])}
   for(let i in inimigos) {
     xInimigos[i] = mover(xInimigos[i], veloInimigos[i])}
+  colidiu()
+  marcaPonto()
 }
