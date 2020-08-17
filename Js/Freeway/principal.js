@@ -8,13 +8,9 @@ function setup() {
 function draw() {
   background(imagemDoFundo);
   criarImagem(imagemDoAtor, xAtor, yAtor, comprimentoXAtor, comprimentoYAtor)
-  criarImagem(imagemDoAbelha, xAbelha, yAbelha, comprimentoXAbelha, comprimentoYAbelha)
-  criarImagem(imagemDoPitbull, xPitbull, yPitbull, comprimentoXPitbull, comprimentoYPitbull)
-  criarImagem(imagemDoMinhoca, xMinhoca, yMinhoca, comprimentoXMinhoca, comprimentoYMinhoca)
-  moverAbelha (2)
-  moverPitbull (4)
-  moverMinhoca (5)
-  // mover(xAbelha,2)
-  // mover(xPitbull, 5)
-  moverAtor ()
+  moverAtor()
+  for(let i in inimigos) {
+    criarImagem(inimigos[i], xInimigos[i], yInimigos[i], comprInimigos[i], altInimigos[i])}
+  for(let i in inimigos) {
+    xInimigos[i] = mover(xInimigos[i], veloInimigos[i])}
 }
