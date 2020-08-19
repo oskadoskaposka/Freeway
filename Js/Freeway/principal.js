@@ -15,4 +15,7 @@ function draw() {
     xInimigos[i] = mover(xInimigos[i], veloInimigos[i])}
   colidiu()
   marcaPonto()
+  mostraPontos()
+  mostraVidas()
+  acabarGame()
 }
