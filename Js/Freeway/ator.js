@@ -15,5 +15,3 @@ const moverAtor = () => {
     yAtor += veloAtor
   }
 }
-
-

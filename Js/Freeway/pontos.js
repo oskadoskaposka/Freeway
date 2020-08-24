@@ -12,5 +12,9 @@ const marcaPonto = () => {
 
 // função para mostrar pontos
 const mostraPontos = () => {
-  text("Pontos: "+ pontos, 160, 20)
+  fill(255,255,255)
+  rect(160,6,90,17)
+  fill(0)
+  textSize(15)
+  text("Pontos: "+ pontos, 200, 20)
 }

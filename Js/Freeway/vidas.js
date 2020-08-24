@@ -15,7 +15,13 @@ const colidiu = () => {
 
 // função para mostrar vidas
 const mostraVidas = () => {
-  text("Vidas: " + vidas, 30, 20)
+  textAlign(CENTER)
+  fill(255,255,255)
+  rect(5,6,70,17)
+  fill(0)
+  textSize(15)
+  textSize(15)
+  text("Vidas: " + vidas, 40, 20)
 }
 
 //função para acabar com o game
@@ -23,8 +29,16 @@ const acabarGame = () => {
   if (vidas < 0) {
     for (let i in inimigos) {veloInimigos[i] = 0}
     veloAtor = 0
-    text("GAME OVER", 350, 190)
+    fill(255,0, 0)
+    rect(140, 148, 320, 50)
+    fill(255)
+    textSize(50)
+    text("GAME OVER", 300, 190)
+    fill(255)
+    rect(130, 218, 350, 30)
+    textSize(20)
+    fill(0)
     text("Você matou a Dede com " + pontos +
-         " pontos!!", 350, 210)
+         " pontos!!", 300, 240)
   }
 }
