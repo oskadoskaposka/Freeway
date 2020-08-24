@@ -14,6 +14,9 @@ function preload (){
     imagemDoMinhoca = loadImage("imagens/minhoca.jpg")
     inimigos = [imagemDoAbelha, imagemDoPitbull, imagemDoMinhoca, 
                 imagemDoPitbull, imagemDoMinhoca, imagemDoAbelha]
+    somTrilha = loadSound("sons/trilha.mp3") 
+    somColidiu = loadSound("sons/colidiu.mp3")
+    somPonto = loadSound("sons/pontos.wav")
 }
 
   // função para colocar as imagens no quadro

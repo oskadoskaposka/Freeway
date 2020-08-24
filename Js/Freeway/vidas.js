@@ -8,6 +8,7 @@ const colidiu = () => {
               xInimigos[i], yInimigos[i], comprInimigos[i], altInimigos[i])
     if (bateu) {
       vidas--
+      somColidiu.play()
       return yAtor = 450
     }
   }

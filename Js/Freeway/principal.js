@@ -2,6 +2,7 @@
 // criar o quadro
 function setup() {
   createCanvas(700, 450);
+  somTrilha.loop()
 }
 
 //função para criar e mover os desenhos

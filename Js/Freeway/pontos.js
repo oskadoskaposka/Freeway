@@ -6,6 +6,7 @@ let pontos = 0
 const marcaPonto = () => {
   if (yAtor < 00) {
     pontos++
+    somPonto.play()
     return yAtor = 450
   }
 }
